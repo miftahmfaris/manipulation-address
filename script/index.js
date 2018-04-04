@@ -9,6 +9,7 @@ function showAddress() {
     let li = document.createElement('li')
     let listAddress = document.createTextNode(arrayAddress[i].fullName)
     li.setAttribute("id", "index_" + i)
+    li.setAttribute("onclick", `destroy(${i})`)
 
     li.appendChild(listAddress);
     listAddressBook.appendChild(li);
@@ -16,9 +17,14 @@ function showAddress() {
 }
 
 function addAddress() {
-  var objectAddress = {};
-  objectAddress.fullName = full_name.value;
-  arrayAddress.push(objectAddress);
+  if (full_name.value !== "") {
+    var objectAddress = {};
+    objectAddress.fullName = full_name.value;
+    arrayAddress.push(objectAddress);
+  } else {
+    alert("Please insert Your Name")
+  }
+  full_name.value = "";
   return arrayAddress;
 }
 
@@ -42,4 +48,11 @@ function callAddThenShow() {
 }
 
 add_button.addEventListener("click", callAddThenShow);
+full_name.addEventListener("keyup", function(event) {
+  event.preventDefault();
+  if (event.keyCode === 13) {
+    add_button.click();
+  }
+});
+
 showAddress();
