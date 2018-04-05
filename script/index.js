@@ -5,8 +5,8 @@ var full_name = document.getElementById("fullName");
 function template(arrayAddress, index) {
   return `
   <span id="list${index}" onclick=editAddress(${index})>${arrayAddress.fullName}</span>
-  <span id="destroy${index}" onclick=destroyAddress(${index})>+</span>
-  <span id="edit${index}" onclick=addEditAddress(${index})>-</span>
+  <span id="destroy${index}" onclick=destroyAddress(${index})>-</span>
+  <span id="edit${index}" onclick=addEditAddress(${index})>+</span>
   `
 }
 
