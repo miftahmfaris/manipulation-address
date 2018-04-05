@@ -2,18 +2,31 @@ var arrayAddress = checkLocalStorage();
 var add_button = document.getElementById("addButton");
 var full_name = document.getElementById("fullName");
 
+function template(arrayAddress, index) {
+  return `
+  <span id="list${index}" onclick=editAddress(${index}) ondblclick=>${arrayAddress.fullName}</span>
+  <span id="destroy${index}" onclick=destroyAddress(${index})>+</span>
+  <span id="edit${index}" onclick=addEditAddress(${index})>-</span>
+  `
+}
+
 function showAddress() {
   listAddressBook.innerHTML = "";
 
-  for (var i = 0; i < arrayAddress.length; i++) {
-    let li = document.createElement('li')
-    let listAddress = document.createTextNode(arrayAddress[i].fullName)
-    li.setAttribute("id", "index_" + i)
-    li.setAttribute("onclick", `destroy(${i})`)
-
-    li.appendChild(listAddress);
-    listAddressBook.appendChild(li);
-  }
+  arrayAddress.forEach((arrayAddress, index) => {
+    const element = document.createElement("li")
+    element.innerHTML = template(arrayAddress, index)
+    listAddressBook.append(element);
+  })
+  // for (var i = 0; i < arrayAddress.length; i++) {
+  //   let li = document.createElement('li')
+  //   let listAddress = document.createTextNode(arrayAddress[i].fullName)
+  //   li.id = "index_" + i //set new attribue id
+  //   li.setAttribute("onclick", "destroy" + i) //set new attribue idqwqweqweq
+  //
+  //   li.appendChild(listAddress);
+  //   listAddressBook.appendChild(li);
+  // }
 }
 
 function addAddress() {
@@ -24,6 +37,7 @@ function addAddress() {
   } else {
     alert("Please insert Your Name")
   }
+  qwqweqweq
   full_name.value = "";
   return arrayAddress;
 }
@@ -54,5 +68,6 @@ full_name.addEventListener("keyup", function(event) {
     add_button.click();
   }
 });
+// document.getElementById(`edit${index}`).("dblclick", editAddress)
 
 showAddress();
