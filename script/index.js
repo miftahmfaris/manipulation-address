@@ -4,7 +4,7 @@ var full_name = document.getElementById("fullName");
 
 function template(arrayAddress, index) {
   return `
-  <span id="list${index}" onclick=editAddress(${index}) ondblclick=>${arrayAddress.fullName}</span>
+  <span id="list${index}" onclick=editAddress(${index})>${arrayAddress.fullName}</span>
   <span id="destroy${index}" onclick=destroyAddress(${index})>+</span>
   <span id="edit${index}" onclick=addEditAddress(${index})>-</span>
   `
@@ -22,7 +22,7 @@ function showAddress() {
   //   let li = document.createElement('li')
   //   let listAddress = document.createTextNode(arrayAddress[i].fullName)
   //   li.id = "index_" + i //set new attribue id
-  //   li.setAttribute("onclick", "destroy" + i) //set new attribue idqwqweqweq
+  //   li.setAttribute("onclick", "destroy" + i) //set new attribue id
   //
   //   li.appendChild(listAddress);
   //   listAddressBook.appendChild(li);
@@ -37,7 +37,6 @@ function addAddress() {
   } else {
     alert("Please insert Your Name")
   }
-  qwqweqweq
   full_name.value = "";
   return arrayAddress;
 }
